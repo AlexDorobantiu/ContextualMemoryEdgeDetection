@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A25B13F9-0D20-4868-878B-E24D20A6B54F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ContextualMemoryEdgeDetection</RootNamespace>
+    <AssemblyName>ContextualMemoryEdgeDetection</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Benchmark\BerkeleyEdgeDetectionBenchmark.cs" />
+    <Compile Include="Benchmark\EdgeDetectionBenchmark.cs" />
+    <Compile Include="Logic\AlgorithmProcessor\EdgeDetectionProcessor.cs" />
+    <Compile Include="Logic\Algorithm\EdgeDetectionAlgorithmUtil.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\ContextMap\BiasContextMapShort.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\ContextualMemoryEdgeDetectionAlgorithmNoCollisionsBiasReplace.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\ContextualMemoryEdgeDetectionAlgorithmNoCollisions.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\ContextualMemoryNestedAlgorithm.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\ContextualMemoryNestedAlgorithmLayer.cs" />
+    <Compile Include="Logic\Algorithm\ImageBlender.cs" />
+    <Compile Include="Logic\Algorithm\ImageBlenders\LogisticMixGrayscaleImageBlender.cs" />
+    <Compile Include="Logic\Algorithm\ImageBlenders\SimpleGrayscaleImageBlender.cs" />
+    <Compile Include="Logic\Algorithm\ImageHandling\ColorChannelEnum.cs" />
+    <Compile Include="Logic\Algorithm\EdgeDetectionAlgorithm.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\Contexts\AbstractContextualMemoryContextComputer.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\Contexts\RaysContextualMemoryContextComputer.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\ContextualMemoryEdgeDetectionAlgorithm.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\Contexts\RelativePixelInformation.cs" />
+    <Compile Include="Logic\Algorithm\ContextualMemoryAlgoritm\SSE\SecondarySymbolEstimationStretchInput.cs" />
+    <Compile Include="Logic\Algorithm\ImageHandling\ImageDescription.cs" />
+    <Compile Include="Logic\Algorithm\FileHandling\ImageFileHandler.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\BlackAndWhiteConverter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\CannyAppenderFilter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\FilterBankUtil.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\GaussFilterExcludeComputed.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\GaussFilter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\KirschAppenderFilter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\MedianFilter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\ResizeFilter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\Filters\SobelAppenderFilter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\ImageFilter.cs" />
+    <Compile Include="Logic\Algorithm\ImageProcessing\ImageFilterChain.cs" />
+    <Compile Include="Logic\Algorithm\ImageHandling\ImageDescriptionUtil.cs" />
+    <Compile Include="Logic\Algorithm\Utils\ListUtils.cs" />
+    <Compile Include="Logic\Algorithm\Utils\LogisticHelper.cs" />
+    <Compile Include="Logic\Algorithm\Utils\NumberUtils.cs" />
+    <Compile Include="Logic\Configuration\GeneralConfiguration.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
